@@ -9,6 +9,7 @@ const configForGet = {
   },
 };
 
+/* --------------------------- Reusable functions --------------------------- */
 const stringifyDate = (date) => new Date(date).toLocaleDateString("en-GB");
 
 const generateCard = (id, description, date, completed) => `
@@ -112,7 +113,7 @@ const printNewTask = (task) => {
   );
 };
 
-/* ------------------------------ Handler done ------------------------------ */
+/* ------------------------------ Handler Events ------------------------------ */
 const handlerDone = (event) => {
   const e = event instanceof HTMLButtonElement ? event.parentNode.parentNode.parentNode : event.parentNode;
 
