@@ -49,13 +49,9 @@ const fetchTasks = () =>
     getOne(".tareas-pendientes").innerHTML = "";
     getOne(".tareas-terminadas").innerHTML = "";
     if (resp.length !== 0) printTasks(resp);
-
     console.log(resp);
     return resp;
   });
-
-/* ----------------------------- Print functions ---------------------------- */
-const printUser = (user) => (getId("username").innerText = user.firstName);
 
 const postNewTask = () => {
   const newTask = {
@@ -74,10 +70,11 @@ const postNewTask = () => {
   fetchFromURL(BASE_URL + "/tasks", config).then((resp) => {
     console.log(resp);
     printNewTask(resp);
-    console.log(resp);
   });
-
 };
+
+/* ----------------------------- Print functions ---------------------------- */
+const printUser = (user) => (getId("username").innerText = user.firstName);
 
 const printTasks = (tasksArr) => {
   setTimeout(() => {
@@ -115,13 +112,16 @@ const printNewTask = (task) => {
 
 /* ------------------------------ Handler Events ------------------------------ */
 const handlerDone = (event) => {
-  const e = event instanceof HTMLButtonElement ? event.parentNode.parentNode.parentNode : event.parentNode;
+  const e =
+    event instanceof HTMLButtonElement
+      ? event.parentNode.parentNode.parentNode
+      : event.parentNode;
 
   const payload = {
     description: e.children[1].firstChild.innerText,
     completed: e.children[0].classList.contains("not-done") ? true : false,
   };
-  const configurations = {
+  const config = {
     method: "PUT",
     body: JSON.stringify(payload),
     headers: {
@@ -129,26 +129,26 @@ const handlerDone = (event) => {
       "Content-type": "application/json",
     },
   };
-  fetchFromURL(`${BASE_URL}/tasks/${e.id}`, configurations).then((resp) => {
+  fetchFromURL(`${BASE_URL}/tasks/${e.id}`, config).then((resp) => {
     e.remove();
     printNewTask(resp);
   });
 };
 
-const handlerDelete = (event) =>{
+const handlerDelete = (event) => {
   const e = event.parentNode.parentNode.parentNode;
-  const configurations = {
+  const config = {
     method: "DELETE",
     headers: {
       authorization: getStorage("token"),
       "Content-type": "application/json",
     },
   };
-  fetchFromURL(`${BASE_URL}/tasks/${e.id}`, configurations).then((resp) => {
+  fetchFromURL(`${BASE_URL}/tasks/${e.id}`, config).then((resp) => {
     console.log(resp);
     e.remove();
   });
-}
+};
 
 /* ------------------------- Executing the functions ------------------------ */
 fetchUser();

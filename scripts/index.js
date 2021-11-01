@@ -18,15 +18,14 @@ getId("login-submit").addEventListener("click", (e) => {
   };
   if (validateForm(user)) {
     const payload = JSON.stringify(user);
-    const configurations = {
+    const config = {
       method: "POST",
       body: payload,
       headers: {
         "Content-type": "application/json",
       },
     };
-    fetchForm(LOGIN_URL, configurations).then((resp) => {
-
+    fetchForm(LOGIN_URL, config).then((resp) => {
       setStorage("token", resp.jwt);
       window.location.href = "../mis-tareas.html";
     });

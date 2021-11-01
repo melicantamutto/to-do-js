@@ -19,14 +19,14 @@ getId("new-submit").addEventListener("click", (e) => {
   if (validateForm(newUser)) {
     delete newUser.password2;
     const payload = JSON.stringify(newUser);
-    const configurations = {
+    const config = {
       method: "POST",
       body: payload,
       headers: {
         "Content-type": "application/json",
       },
     };
-    fetchForm(REGISTER_URL, configurations);
+    fetchForm(REGISTER_URL, config);
   } else {
     alert("Formulario inválido");
   }
