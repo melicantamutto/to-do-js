@@ -24,7 +24,7 @@ const generateCard = (id, description, date, completed) => `
   ${
     !completed
       ? ` <p class="timestamp"><i class="far
-  fa-calendar-alt"></i>Creada: ${date}</p>`
+  fa-calendar-alt"></i> ${date}</p>`
       : `<div>
   <button type="button" onclick="handlerDone(this)"><i class="fas
   fa-undo-alt change"></i></button>
@@ -130,13 +130,6 @@ const handlerDone = (event) => {
     },
   };
   fetchFromURL(`${BASE_URL}/tasks/${e.id}`, configurations).then((resp) => {
-    if(e.children[0].classList.contains("not-done")){
-      e.children[0].classList.add("done");
-      e.children[0].classList.remove("not-done");
-    }else{
-      e.children[0].classList.remove("done");
-      e.children[0].classList.add("not-done");
-    }
     e.remove();
     printNewTask(resp);
   });
