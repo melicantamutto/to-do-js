@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToDo</title>
+
+  <!-- ---------------- estilos compartidos de login y signup ---------------- -->
+  <link rel="stylesheet" href="styles/ingreso.css">
+
+  
+  
+</head>
+
+<body>
+  
+  <div class="left">
+    <img src="./assets/persona-signup.png" alt="">
+  </div>
+  <div class="right">
+    <form>
+      <div class="form-header">
+        <p>To-Do App</p>
+      </div>
+      
+      <label>
+        Nombre:
+        <input id="new-name" type="text">
+      </label>
+      <label>
+        Apellido:
+        <input id="new-last-name" type="text">
+      </label>
+      <label>
+        Email:
+        <input id="new-email" type="text">
+      </label>
+      <label>
+        Contraseña:
+        <input id="new-pass" type="password">
+      </label>
+      <label>
+        Repetir contraseña:
+        <input id="new-pass-two" type="password">
+      </label>
+      
+      <button id="new-submit">Crear Cuenta</button>
+      
+    </form>
+    <div class="ingresarA">
+      <a href="index.html">¿Ya tiene una cuenta? Ingrese aquí</a>
+    </div>
+  </div>
+  <!-- ---------------------- logica aplicada en register -------------------- -->
+  <script src="/scripts/utils.js"></script>
+  <script defer src="/scripts/signup.js"></script>
+</body>
+
+</html>
