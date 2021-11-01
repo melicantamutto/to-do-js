@@ -1,12 +1,15 @@
 /* ----------------------------- Page variables ----------------------------- */
 if (!getStorage("token")) window.location.href = "../index.html";
-
-const configForGet = {
-  method: "GET",
+const baseConfig = {
   headers: {
     authorization: getStorage("token"),
     "Content-type": "application/json",
   },
+}
+
+const configForGet = {
+  method: "GET",
+  ...baseConfig,
 };
 
 /* --------------------------- Reusable functions --------------------------- */
@@ -62,10 +65,7 @@ const postNewTask = () => {
   const config = {
     method: "POST",
     body: payload,
-    headers: {
-      authorization: getStorage("token"),
-      "Content-type": "application/json",
-    },
+    ...baseConfig,
   };
   fetchFromURL(BASE_URL + "/tasks", config).then((resp) => {
     console.log(resp);
@@ -124,10 +124,7 @@ const handlerDone = (event) => {
   const config = {
     method: "PUT",
     body: JSON.stringify(payload),
-    headers: {
-      authorization: getStorage("token"),
-      "Content-type": "application/json",
-    },
+    ...baseConfig,
   };
   fetchFromURL(`${BASE_URL}/tasks/${e.id}`, config).then((resp) => {
     e.remove();
