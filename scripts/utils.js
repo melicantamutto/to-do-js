@@ -1,5 +1,8 @@
 /* ---------------------------- Global constants ---------------------------- */
 const BASE_URL = "https://ctd-todo-api.herokuapp.com/v1";
+const regexName = /^[a-zA-ZÀ-ú ]+$/;
+const regexEmail =
+  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 /* --------------------------- Traer nodos del DOM -------------------------- */
 const getId = (id) => document.getElementById(id);
@@ -15,6 +18,11 @@ const setStorage = (key, array) =>
 
 /* ------------------ Validar que el string no este vacíop ------------------ */
 const validateString = (str) => str !== "" && str.length !== 0;
+
+/* ------------ Validar cada campo seún la regex que corresponde ------------ */
+const validateRegexName = (value) => regexName.test(value);
+
+const validateRegexEmail = (value) => regexEmail.test(value.toLowerCase());
 
 /* -- Validar un objeto con todos los valores de los inputs del formulario -- */
 const validateInputNotEmpty = (user) => {
